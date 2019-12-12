@@ -47,6 +47,7 @@ artifacts {
   archives androidSourcesJar
   archives androidJavadocsJar
 }
+/*
 
 signing {
   required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
@@ -98,3 +99,4 @@ uploadArchives {
     }
   }
 }
+*/
