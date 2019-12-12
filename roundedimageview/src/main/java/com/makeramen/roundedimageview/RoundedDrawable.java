@@ -61,7 +61,7 @@ public class RoundedDrawable extends Drawable {
   private Shader.TileMode mTileModeY = Shader.TileMode.CLAMP;
   private boolean mRebuildShader = true;
 
-  // [ topLeft, topLeft, topRight, topRight, bottomLeft, bottomLeft, bottomRight, bottomRight ]
+  // [ topLeft, topLeft, topRight, topRight, bottomRight, bottomRight, bottomLeft, bottomLeft ]
   private float[] mCornerRadiusArray = new float[8];
   private float mCornerRadius = 0f;
 
@@ -438,8 +438,11 @@ public class RoundedDrawable extends Drawable {
   }
 
   public RoundedDrawable setBorderWidth(float width) {
-    mBorderWidth = width;
-    mBorderPaint.setStrokeWidth(mBorderWidth);
+    if (mBorderWidth != width) {
+      mBorderWidth = width;
+      updateShaderMatrix();
+      mBorderPaint.setStrokeWidth(mBorderWidth);
+    }
     return this;
   }
 
